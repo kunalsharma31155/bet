@@ -6,7 +6,7 @@ function auth(req,res,next) {
     if(!token) return res.status(401).json({ type: "Invalid", msg: "Access denied. No token provided."});
 
     try{
-        const decoded = jwt.verify(token,process.env.JWT_PRIVATE_KEY);
+        const decoded = jwt.verify(token,'gambling_jwtprivatekey');
         req.user = decoded;
         next();
     }catch (ex) {

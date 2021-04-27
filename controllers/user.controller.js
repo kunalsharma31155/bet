@@ -17,7 +17,7 @@ module.exports.register =  async (req,res,next) => {
         
         await user.save(async(err, doc) => {
             if(!err) {
-                const token = jwt.sign({ _id: user._id ,name:user.firstName }, process.env.JWT_PRIVATE_KEY,{ expiresIn : '2h'});
+                const token = jwt.sign({ _id: user._id ,name:user.firstName }, 'gambling_jwtprivatekey',{ expiresIn : '2h'});
                 const refreshToken = jwt.sign({ _id: user._id  }, process.env.REFRESH_TOKEN ,{ expiresIn : '1y'});
                 res.status(200).header('x-auth-token',token).send( [_.pick(user, ['_id','firstName','lastName','userLoginId','email','activeStatus']), {'success':true}]);
             }
@@ -41,7 +41,7 @@ module.exports.loginUser =  async (req,res,next) => {
 
             if(user.activeStatus == false) return res.status(400).json({ type: "Not Found", msg: "Account Disabled ! Contact Admin" });
             const token = jwt.sign({ _id: user._id ,userRole: user.userRole ,status: user.activeStatus,email:user.email,name:user.firstName,
-                lastName:user.lastName}, process.env.JWT_PRIVATE_KEY ,{ expiresIn : '2h'});
+                lastName:user.lastName}, 'gambling_jwtprivatekey' ,{ expiresIn : '2h'});
             const refreshToken = jwt.sign({ _id: user._id ,userRole: user.userRole }, process.env.REFRESH_TOKEN ,{ expiresIn : '1y'});
             res.status(200).json({success : true, token: token, refreshToken : refreshToken})
         }
