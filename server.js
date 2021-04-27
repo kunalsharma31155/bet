@@ -11,7 +11,7 @@ app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'index.html'))
 })
 var PORT = process.env.PORT || 5000;
-app.listen( PORT,err=>{
+app.listen( PORT,'0.0.0.0',err=>{
     if(err){console.log(err);}
     console.log(`Server Started On Port : ${process.env.PORT}`);
 })
