@@ -6,6 +6,11 @@ require('./startup/prod') (app);
 require('./models/db');
 
 require('./startup/routes') (app);
+app.use(express.static(path.join(__dirname, 'client')))
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'index.html'))
+})
+
 let port = process.env.PORT || 5000;
 app.listen( port,err=>{
     if(err){console.log(err);}
