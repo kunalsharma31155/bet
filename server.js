@@ -13,5 +13,5 @@ app.get('/*', (req, res) => {
 var PORT = process.env.PORT || 5000;
 app.listen( process.env.PORT || 3000, process.env.HOST || '::',err=>{
     if(err){console.log(err);}
-    console.log(`Server Started On Port : ${process.env.PORT}`);
-})
+    console.log(`Server Started On Portt : ${process.env.PORT}`);
+}) 
