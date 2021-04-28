@@ -20,9 +20,7 @@ app.use(function (req, res, next) {
       "Origin, X-Requested-With, Content-Type, Accept"
     );
     res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
-    res.header("Content-Security-Policy", "default-src *");
-    res.header("X-Content-Security-Policy", "default-src *");
-    res.header("X-WebKit-CSP", "default-src *");
+    res.header("Content-Security-Policy-Report-Only", "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'");
     next();
   });
 app.listen( PORT,err=>{
