@@ -1,0 +1,11 @@
+---
+application:
+  name: "bet"
+  project: "bet-project"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-bet"
+  routes:
+  - application_name: "bet"
+    paths:
+    - "/*"
