@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const express = require('express');
 const cors = require('cors');
 var path = require( "path" );
-var csp = require('express-csp-header');
 
 const error = require('../middleware/error');
 const user = require('../api/user.router');
@@ -13,12 +12,6 @@ const user = require('../api/user.router');
 module.exports = function(app){
     app.use(bodyParser.urlencoded({
         extended: true,limit: '25mb',parameterLimit:50000
-    }));
-    app.use(csp({
-        policies: {
-            'default-src': [csp.NONE],
-            'img-src': [csp.SELF],
-        }
     }));
     app.use(bodyParser.json({limit: '25mb'}));
     app.use(cors());
