@@ -11,18 +11,9 @@ require('./startup/routes') (app);
 //     res.sendFile(path.join(__dirname, 'client', 'index.html'))
 // })
 var PORT = process.env.PORT || 5000;
-var server_host = process.env.YOUR_HOST || '0.0.0.0';
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
-    res.header("Content-Security-Policy-Report-Only", "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'");
-    next();
-  });
-app.listen( PORT,err=>{
+var serverhost = process.env.YOUR_HOST || '0.0.0.0';
+
+app.listen( PORT,serverhost,err=>{
     if(err){console.log(err);}
     console.log(`Server Started On Portt : ${process.env.PORT}`);
 }) 
