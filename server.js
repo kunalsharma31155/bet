@@ -13,7 +13,7 @@ app.get('/*', (req, res) => {
 var PORT = process.env.PORT || 5000;
 var server_host = process.env.YOUR_HOST || '0.0.0.0';
 
-app.listen( PORT, server_host,err=>{
+app.listen( PORT,err=>{
     if(err){console.log(err);}
     console.log(`Server Started On Portt : ${process.env.PORT}`);
 }) 
